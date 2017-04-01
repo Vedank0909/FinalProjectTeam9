@@ -1,14 +1,14 @@
 <% include ../partials/header.ejs %>
 
 <!-- Render the Registration form  -->
-	<main class="container">
+	<main class="jumbotron">
 	<!-- Display flash messages  -->
 	<% if (messages.length > 0) { %>
         <div class="alert alert-danger"><%= messages %></div>
       <% } %>
 		<div class="row">
             <div class="col-md-offset-4 col-md-4">
-                <h1>User Registration</h1>
+                <h2>User Registration</h2>
                 <form method="post">
                     <fieldset class="form-group">
                         <label for="email">Email: *</label>
