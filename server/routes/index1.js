@@ -1,3 +1,4 @@
+// modules required for routing
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
@@ -7,8 +8,10 @@ let passport = require('passport');
 let UserModel = require('../models/users');
 let User = UserModel.User; // alias for User Model - User object
 
-// define the game model
-let tournament = require('../models/tournaments');
+// define the tournament model
+
+let tournament = require('../models/tournament');
+
 
 // create a function to check if the user is authenticated
 function requireAuth(req, res, next) {
@@ -26,6 +29,9 @@ router.get('/', (req, res, next) => {
     displayName: req.user ? req.user.displayName : ''
    });
 });
+
+
+
 
 /* GET contact page. */
 router.get('/contact', (req, res, next) => {
@@ -47,13 +53,13 @@ router.get('/login', (req, res, next)=>{
     });
     return;
   } else {
-    return res.redirect('/tournaments'); // redirect to games list
+    return res.redirect('/'); // redirect to games list
   }
 });
 
 // POST /login - process the login attempt
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/tournaments',
+  successRedirect: '/tournament',
   failureRedirect: '/login',
   failureFlash: 'bad login'
 }));
@@ -70,7 +76,7 @@ router.get('/register', (req, res, next)=>{
     });
     return;
   } else {
-    return res.redirect('/tournaments'); // redirect to games list
+    return res.redirect('/tournament'); 
   }
 });
 
@@ -92,14 +98,13 @@ router.post('/register', (req, res, next)=>{
         }
         return res.render('auth/register', {
           title: "Register",
-          games: '',
           messages: req.flash('registerMessage'),
           displayName: req.user ? req.user.displayName : ''
         });
       }
       // if registration is successful
       return passport.authenticate('local')(req, res, ()=>{
-        res.redirect('/tournaments');
+        res.redirect('/tournament');
       });
     });
 });
@@ -109,5 +114,13 @@ router.get('/logout', (req, res, next)=>{
   req.logout();
   res.redirect('/'); // redirect to the home page
 });
+
+router.get('/tournament', (req, res, next) => {
+  res.render('content/tournament', {
+    title: 'Dashboard',
+    displayName: req.user ? req.user.displayName : ''
+   });
+});
+
 
 module.exports = router;

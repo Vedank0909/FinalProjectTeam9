@@ -1,0 +1,38 @@
+<% include ../partials/header.ejs %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <h3>Tournament List </h3>
+         
+          <br>
+          <table class="table table-bordered table-striped table-hover">
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Description</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+            <!-- Template Row -->
+            <% for (let count = 0; count < tournaments.length; count++) { %>
+            <tr>
+              <td class="text-center"><%= tournaments[count].name %></td>
+              <td class="text-center"><%= tournaments[count].description %></td>
+              <td class="text-center">
+              <a href="/tournaments/<%= tournaments[count]._id %>" class="btn btn-primary">
+              <i class="fa fa-pencil-square-o"></i> Edit</a>
+               </td>
+              <td class="text-center">
+              <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i> Delete</a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+           <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Tournament</a>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
