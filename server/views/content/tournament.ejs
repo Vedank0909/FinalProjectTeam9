@@ -11,24 +11,29 @@
             <tr>
               <th class="text-center">Name</th>
               <th class="text-center">Description</th>
-              <th class="text-center"></th>
+              <th class="text-center">Owner</th>
+              <th class="text-center">Completd</th>
+               <th class="text-center"></th>
               <th class="text-center"></th>
             </tr>
             <!-- Template Row -->
             <% for (let count = 0; count < tournaments.length; count++) { %>
             <tr>
+            <% if(tournaments[count].displayname==displayName){ %>
               <td class="text-center"><%= tournaments[count].name %></td>
               <td class="text-center"><%= tournaments[count].description %></td>
+              <td class="text-center"><%= tournaments[count].displayname %></td>
+               <td class="text-center"><%= tournaments[count].completed %></td>
               <td class="text-center">
               <a href="/tournaments/<%= tournaments[count]._id %>" class="btn btn-primary">
-              <i class="fa fa-pencil-square-o"></i> Edit</a>
+              <i class="fa fa-pencil-square-o"></i> Register Players</a>
                </td>
               <td class="text-center">
               <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-danger">
               <i class="fa fa-trash-o"></i> Delete</a>
               </td>
             </tr>
-            <% } %>
+            <% }} %>
           </table>
            <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Tournament</a>
         </div>

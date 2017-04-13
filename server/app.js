@@ -60,6 +60,7 @@ app.use(passport.session());
 // route redirects
 app.use('/', index);
 app.use('/tournaments', tournaments);
+app.use('/reg', tournaments);
 
 
 // Passport User Configuration

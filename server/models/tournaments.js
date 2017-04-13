@@ -3,7 +3,9 @@ let mongoose = require('mongoose');
 // create a model class
 let tournamentSchema = mongoose.Schema({
     name: String,
-    description: String
+    description: String,
+    displayname: String,
+    completed: String
    
 },
 {

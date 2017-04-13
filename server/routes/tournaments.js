@@ -10,6 +10,7 @@ let User = UserModel.User; // alias for User Model - User object
 
 // define the game model
 let tournament = require('../models/tournaments');
+let player = require('../models/players')
 
 // create a function to check if the user is authenticated
 function requireAuth(req, res, next) {
@@ -31,7 +32,7 @@ router.get('/', requireAuth, (req, res, next) => {
       res.render('content/tournament', {
         title: 'Tournament',
         tournaments: tournaments,
-        displayName: req.user.displayName
+        displayName: req.user ? req.user.displayName : ''
       });
     }
   });
@@ -43,7 +44,7 @@ router.get('/add', requireAuth, (req, res, next) => {
   res.render('content/details', {
     title: "Details",
     tournaments: '',
-    displayName: req.user.displayName
+    displayName: req.user ? req.user.displayName : ''
   });
 });
 
@@ -52,7 +53,9 @@ router.post('/add', requireAuth, (req, res, next) => {
 
     let newTournament = tournament({
       "name": req.body.name,
-      "description": req.body.description
+      "description": req.body.description,
+      "displayname": req.user ? req.user.displayName : '',
+      "completed": req.body.completed
     });
 
     tournament.create(newTournament, (err, tournaments) => {
@@ -64,6 +67,7 @@ router.post('/add', requireAuth, (req, res, next) => {
       }
     });
 });
+
 
 // GET the Game Details page in order to edit a new Game
 router.get('/:id', requireAuth, (req, res, next) => {
@@ -79,10 +83,10 @@ router.get('/:id', requireAuth, (req, res, next) => {
           res.end(error);
         } else {
           // show the game details view
-          res.render('content/details', {
+          res.render('content/player', {
               title: 'Tournament Details',
               tournaments: tournaments,
-              displayName: req.user.displayName
+              displayname: req.user.displayName
           });
         }
       });
@@ -94,26 +98,71 @@ router.get('/:id', requireAuth, (req, res, next) => {
 
 // POST - process the information passed from the details form and update the document
 router.post('/:id', requireAuth, (req, res, next) => {
+  let id = req.params.id;
   // get a reference to the id from the url
-    let id = req.params.id;
-
-     let updatedGame = tournament({
-       "_id": id,
-      "name": req.body.name,
-      "description": req.body.description
+    let newplayers = player({
+      "name": req.body.pname,
+      "teamname": req.body.teamname,
+      "tournamentname": req.body.tournamentname
     });
 
-    tournament.update({_id: id}, updatedGame, (err) => {
+    player.create(newplayers, (err, tournaments) => {
       if(err) {
         console.log(err);
         res.end(err);
       } else {
-        // refresh the game List
         res.redirect('/tournaments');
       }
     });
-
 });
+
+
+router.get('reg/:id', requireAuth, (req, res, next) => {
+
+    try {
+      // get a reference to the id from the url
+      let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
+
+        // find one game by its id
+      tournament.findById(id, (err, tournaments) => {
+        if(err) {
+          console.log(err);
+          res.end(error);
+        } else {
+          // show the game details view
+          res.render('content/player', {
+              title: 'Tournament Details',
+              tournaments: tournaments,
+              displayname: req.user.displayName
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/errors/404');
+    }
+});
+
+// POST - process the information passed from the details form and update the document
+router.post('reg/:id', requireAuth, (req, res, next) => {
+  // get a reference to the id from the url
+    let newplayer = player({
+      "name": req.body.pname,
+      "teamname": req.body.teamname,
+      "tournamentname": req.body.tournamentname
+    });
+
+    player.create(newplayers, (err, tournaments) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        res.redirect('/:id');
+      }
+    });
+});
+
+
 
 
 // GET - process the delete by user id
