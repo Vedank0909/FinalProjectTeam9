@@ -101,12 +101,12 @@ router.post('/:id', requireAuth, (req, res, next) => {
   let id = req.params.id;
   // get a reference to the id from the url
     let newplayers = player({
-      "name": req.body.pname,
-      "teamname": req.body.teamname,
-      "tournamentname": req.body.tournamentname
+      "pname": req.body.pname,
+      "tname": req.body.tname,
+      "tid": req.body.tid
     });
 
-    player.create(newplayers, (err, tournaments) => {
+    player.create(newplayers, (err, players) => {
       if(err) {
         console.log(err);
         res.end(err);
@@ -117,50 +117,14 @@ router.post('/:id', requireAuth, (req, res, next) => {
 });
 
 
-router.get('reg/:id', requireAuth, (req, res, next) => {
-
-    try {
-      // get a reference to the id from the url
-      let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
-
-        // find one game by its id
-      tournament.findById(id, (err, tournaments) => {
-        if(err) {
-          console.log(err);
-          res.end(error);
-        } else {
-          // show the game details view
-          res.render('content/player', {
-              title: 'Tournament Details',
-              tournaments: tournaments,
-              displayname: req.user.displayName
-          });
-        }
-      });
-    } catch (err) {
-      console.log(err);
-      res.redirect('/errors/404');
-    }
+router.get('/pl', (req, res, next) => {
+  res.render('content/contact', {
+    title: 'Active Tournament',
+    displayName: req.user ? req.user.displayName : ''
+   });
 });
 
-// POST - process the information passed from the details form and update the document
-router.post('reg/:id', requireAuth, (req, res, next) => {
-  // get a reference to the id from the url
-    let newplayer = player({
-      "name": req.body.pname,
-      "teamname": req.body.teamname,
-      "tournamentname": req.body.tournamentname
-    });
 
-    player.create(newplayers, (err, tournaments) => {
-      if(err) {
-        console.log(err);
-        res.end(err);
-      } else {
-        res.redirect('/:id');
-      }
-    });
-});
 
 
 

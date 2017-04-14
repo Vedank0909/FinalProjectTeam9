@@ -1,14 +1,14 @@
 let mongoose = require('mongoose');
-
+let Schema = mongoose.Schema; //alias for mongoose Schema
 // create a model class
 let playersSchema = mongoose.Schema({
-    name: String,
-    teamname: String,
-    tournamentname:String
+    pname: String,
+    tname: String,
+    tid:String
    
 },
 {
-  collection: "tournament"
+  collection: "players"
 });
 
-module.exports = mongoose.model('tournament', playersSchema);
+module.exports = mongoose.model('players', playersSchema);

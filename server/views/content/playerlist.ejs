@@ -1,0 +1,34 @@
+<% include ../partials/header.ejs %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <h3>Player List </h3>
+         
+          <br>
+          <table class="table table-bordered table-striped table-hover">
+            <tr>
+              <th class="text-center"><%= pid %></th>
+              <th class="text-center">Description</th>
+              <th class="text-center">Owner</th>
+             
+            </tr>
+            <!-- Template Row -->
+            <% for (let count = 0; count < players.length; count++) { %>
+            <tr>
+            <% if(players[count].tid==pid){ %>
+              <td class="text-center"><%= players[count].pname %></td>
+              <td class="text-center"><%= players[count].tname %></td>
+              
+          
+            
+            <% }} %>
+          </table>
+           <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Tournament</a>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
+    </div>

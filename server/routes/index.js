@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
 /* GET contact page. */
 router.get('/contact', (req, res, next) => {
   res.render('content/contact', {
-    title: 'Contact',
+    title: 'Active Tournament',
     displayName: req.user ? req.user.displayName : ''
    });
 });

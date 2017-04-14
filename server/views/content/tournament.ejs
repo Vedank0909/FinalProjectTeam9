@@ -13,7 +13,8 @@
               <th class="text-center">Description</th>
               <th class="text-center">Owner</th>
               <th class="text-center">Completd</th>
-               <th class="text-center"></th>
+               <th class="text-center">Player List</th>
+              <th class="text-center"></th>
               <th class="text-center"></th>
             </tr>
             <!-- Template Row -->
@@ -27,6 +28,10 @@
               <td class="text-center">
               <a href="/tournaments/<%= tournaments[count]._id %>" class="btn btn-primary">
               <i class="fa fa-pencil-square-o"></i> Register Players</a>
+               </td>
+                 <td class="text-center">
+              <a href="/players/<%= tournaments[count]._id %>" class="btn btn-primary">
+              <i class="fa fa-pencil-square-o"></i> Player List</a>
                </td>
               <td class="text-center">
               <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-danger">
