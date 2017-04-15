@@ -1,5 +1,5 @@
 module.exports = {
   //local MongoDB deployment ->
-  "URI": "mongodb://localhost/tournament"
-  //Remote MongoDB deployment -> let URI = "mongodb://thomas:123456@ds054999.mlab.com:54999/videogames";
+ // "URI": "mongodb://localhost/tournament"
+  let URI = "mongodb://vedank:vedank@ds161410.mlab.com:61410/tournament;
 };

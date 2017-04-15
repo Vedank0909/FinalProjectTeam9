@@ -31,7 +31,7 @@ let id = req.params.id;
     else {
       res.render('content/rounds', {
         title: 'Rounds',
-        players: players,
+        rounds: rounds,
         pid:id,
         displayName: req.user ? req.user.displayName : ''
       });
@@ -56,7 +56,8 @@ router.post('/:id', requireAuth, (req, res, next) => {
         console.log(err);
         res.end(err);
       } else {
-        res.redirect('/tournaments');
+        console.log("Winner added for the round")
+        res.redirect('/content/rounds');
       }
     });
 });

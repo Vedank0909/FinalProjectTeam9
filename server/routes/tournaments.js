@@ -11,6 +11,7 @@ let User = UserModel.User; // alias for User Model - User object
 // define the game model
 let tournament = require('../models/tournaments');
 let player = require('../models/players')
+let round = require('../models/rounds')
 
 // create a function to check if the user is authenticated
 function requireAuth(req, res, next) {
@@ -117,9 +118,82 @@ router.post('/:id', requireAuth, (req, res, next) => {
         console.log(err);
         res.end(err);
       } else {
+        console.log("Player list created");
+      }
+    });
+
+ let newround11 = round({
+      "roundno": '1',
+      "matchno": '1',
+      "pname1": req.body.pname1,
+      "pname2": req.body.pname2,
+      "winner": '',
+      "tid": req.body.tid
+    });
+
+round.create(newround11, (err, rounds) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        console.log("Player list created");
+      }
+    });
+
+    let newround12 = round({
+      "roundno": '1',
+      "matchno": '2',
+      "pname1": req.body.pname3,
+      "pname2": req.body.pname4,
+      "winner": '',
+      "tid": req.body.tid
+    });
+
+round.create(newround12, (err, rounds) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+       console.log("Player list created");
+      }
+    });
+
+    let newround13 = round({
+      "roundno": '1',
+      "matchno": '3',
+      "pname1": req.body.pname5,
+      "pname2": req.body.pnam6,
+      "winner": '',
+      "tid": req.body.tid
+    });
+
+round.create(newround13, (err, rounds) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        console.log("Player list created");
+      }
+    });
+
+    let newround14 = round({
+      "roundno": '1',
+      "matchno": '4',
+      "pname1": req.body.pname7,
+      "pname2": req.body.pname8,
+      "winner": '',
+      "tid": req.body.tid
+    });
+
+round.create(newround14, (err, rounds) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
         res.redirect('/tournaments');
       }
     });
+
 });
 
 

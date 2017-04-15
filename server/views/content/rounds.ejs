@@ -1,45 +1,39 @@
 <% include ../partials/header.ejs %>
 
     <!-- MAIN CONTENT -->
-    <div class="container">
+    <div class="jumbatron">
       <div class="row">
         <div class="container-fluid bg-1 text-center">
-          <h1><%= title %></h1>
-            <form class="form" method="post">
-
-                <div class="form-group">
-                <% var round = 1; %>
-                <% var matchno = 1; %>
-                <label for="NameTextField" name = "roundno">Round<%= round %></label>
-                
-              </div>
-
-             
-
-                <div class="form-group">
-                <label for="NameTextField">Name</label>
-                <input type="text" class="form-control" id="NameTextField"
-                placeholder="Player 2" name="pname<% round + 1%>" >
-              </div>
-
-                <div class="form-group">
-                <label for="NameTextField">Name</label>
-                <input type="text" class="form-control" id="NameTextField"
-                placeholder="Winner" name="winner" >
-              </div>
-
-            
-
-                <div class="form-group">
-                <label for="tournamentnameTextField">Tournament Name</label>
+         <% for (let count = 0; count < rounds.length; count++) { %>
+       
+         <% if(rounds[count].tid==pid && rounds[count].winner=="") { %>
+         <form class="form" method="post">
+         <div class="form-group">
+                <label for="tournamentnameTextField">Round No</label>
                 <input type="text" class="form-control" id="tournamentTextField"
-                placeholder="tournament id" name="tid" value="<%= tournaments.id %>"  required>
+                placeholder="tournament id" name="roundno" value="<%= rounds[count].roundno %>"  required>
               </div>
-            
-
-              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
-              <a href="/rounds/<%= tournaments.id %>" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
-            </form>
+       <div class="form-group">
+                <label for="tournamentnameTextField">Match no</label>
+                <input type="text" class="form-control" id="tournamentTextField"
+                placeholder="tournament id" name="matchno" value="<%= rounds[count].matchno%>"  required>
+              </div>
+        <div class="form-group">
+                <label for="tournamentnameTextField">Player 1</label>
+                <input type="text" class="form-control" id="tournamentTextField"
+                placeholder="tournament id" name="pname1" value="<%= rounds[count].pname1 %>"  required>
+              </div>
+         <div class="form-group">
+                <label for="tournamentnameTextField">Player 2</label>
+                <input type="text" class="form-control" id="tournamentTextField"
+                placeholder="tournament id" name="pname2" value="<%=rounds[count].pname2 %>"  required>
+              </div> 
+         <label for="completedTextField">Winner</label>
+                <input type="text" class="form-control" id="completedTextField"
+                placeholder="Please Enter winner" name="winner"  required>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit for match <%=rounds[count].matchno%> </button>
+         <% }} %>
+         </form>
         </div>
       </div>
     </div>
