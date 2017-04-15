@@ -14,6 +14,7 @@
               <th class="text-center">Owner</th>
               <th class="text-center">Completd</th>
                <th class="text-center">Player List</th>
+              <th class="text-center">Rounds</th>
               <th class="text-center"></th>
               <th class="text-center"></th>
             </tr>
@@ -25,14 +26,20 @@
               <td class="text-center"><%= tournaments[count].description %></td>
               <td class="text-center"><%= tournaments[count].displayname %></td>
                <td class="text-center"><%= tournaments[count].completed %></td>
+               <td class="text-center">
+              <a href="/rounds/<%= tournaments[count]._id %>" class="btn btn-primary">
+              <i class="fa fa-pencil-square-o"></i>Rounds</a>
+               </td>
               <td class="text-center">
               <a href="/tournaments/<%= tournaments[count]._id %>" class="btn btn-primary">
               <i class="fa fa-pencil-square-o"></i> Register Players</a>
                </td>
                  <td class="text-center">
+                 <% if(tournaments[count].completed=="no"){ %>
               <a href="/players/<%= tournaments[count]._id %>" class="btn btn-primary">
               <i class="fa fa-pencil-square-o"></i> Player List</a>
                </td>
+               <% } %>
               <td class="text-center">
               <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-danger">
               <i class="fa fa-trash-o"></i> Delete</a>
@@ -40,7 +47,7 @@
             </tr>
             <% }} %>
           </table>
-           <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Tournament</a>
+           <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Start a Tournament</a>
         </div>
       </div>
     </div>

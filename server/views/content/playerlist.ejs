@@ -8,24 +8,21 @@
          
           <br>
           <table class="table table-bordered table-striped table-hover">
-            <tr>
-              <th class="text-center"><%= pid %></th>
-              <th class="text-center">Description</th>
-              <th class="text-center">Owner</th>
-             
-            </tr>
+
             <!-- Template Row -->
-            <% for (let count = 0; count < players.length; count++) { %>
-            <tr>
-            <% if(players[count].tid==pid){ %>
-              <td class="text-center"><%= players[count].pname %></td>
-              <td class="text-center"><%= players[count].tname %></td>
-              
-          
+          <% for (let count = 0; count < players.length; count++) { %>
             
+            <% if(players[count].tid==pid){ %>
+              <tr class="text-center"><%= players[count].pname1 %></tr><br>
+             <tr class="text-center"><%= players[count].pname2 %></tr><br>
+              <tr class="text-center"><%= players[count].pname3 %></tr><br>
+              <tr class="text-center"><%= players[count].pname4 %></tr><br>
+          <tr class="text-center"><%= players[count].pname5 %></tr><br>
+            <tr class="text-center"><%= players[count].pname6 %></tr><br>
+            <tr class="text-center"><%= players[count].pname7 %></tr><br>
+            <tr class="text-center"><%= players[count].pname8 %></tr><br>
             <% }} %>
           </table>
-           <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Tournament</a>
         </div>
       </div>
     </div>

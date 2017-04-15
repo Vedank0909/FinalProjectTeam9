@@ -30,6 +30,7 @@ db.once('open', () => {
 let index = require('./routes/index'); // top level routes
 let tournaments = require('./routes/tournaments');
 let players = require('./routes/players');
+let rounds = require('./routes/rounds');
 
 
 let app = express();
@@ -63,6 +64,7 @@ app.use('/', index);
 app.use('/tournaments', tournaments);
 app.use('/players', players);
 app.use('/reg', tournaments);
+app.use('/rounds', rounds);
 
 
 // Passport User Configuration

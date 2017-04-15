@@ -101,8 +101,14 @@ router.post('/:id', requireAuth, (req, res, next) => {
   let id = req.params.id;
   // get a reference to the id from the url
     let newplayers = player({
-      "pname": req.body.pname,
-      "tname": req.body.tname,
+      "pname1": req.body.pname1,
+      "pname1": req.body.pname2,
+      "pname3": req.body.pname3,
+      "pname4": req.body.pname4,
+      "pname5": req.body.pname5,
+      "pname6": req.body.pname6,
+      "pname7": req.body.pname7,
+      "pname8": req.body.pname8,
       "tid": req.body.tid
     });
 
