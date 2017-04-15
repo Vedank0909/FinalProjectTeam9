@@ -6,7 +6,8 @@ let roundsSchema = mongoose.Schema({
     matchNo: Number,
     pname1: String,
     pname2:String,
-    winner:String
+    winner:String,
+    tid:String
    
 },
 {
