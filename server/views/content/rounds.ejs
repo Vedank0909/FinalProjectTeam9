@@ -1,42 +1,44 @@
 <% include ../partials/header.ejs %>
+<div class="round r-of-4">
+<% var matchno=1; var pname1,pname2;var roundno=2; %>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==1){ %>
 
-    <!-- MAIN CONTENT -->
-    <div class="jumbatron">
-      <div class="row">
-        <div class="container-fluid bg-1 text-center">
-         <% for (let count = 0; count < rounds.length; count++) { %>
-       
-         <% if(rounds[count].tid==pid && rounds[count].winner=="") { %>
-         <form class="form" method="post">
-         <div class="form-group">
-                <label for="tournamentnameTextField">Round No</label>
-                <input type="text" class="form-control" id="tournamentTextField"
-                placeholder="tournament id" name="roundno" value="<%= rounds[count].roundno %>"  required>
-              </div>
-       <div class="form-group">
-                <label for="tournamentnameTextField">Match no</label>
-                <input type="text" class="form-control" id="tournamentTextField"
-                placeholder="tournament id" name="matchno" value="<%= rounds[count].matchno%>"  required>
-              </div>
-        <div class="form-group">
-                <label for="tournamentnameTextField">Player 1</label>
-                <input type="text" class="form-control" id="tournamentTextField"
-                placeholder="tournament id" name="pname1" value="<%= rounds[count].pname1 %>"  required>
-              </div>
-         <div class="form-group">
-                <label for="tournamentnameTextField">Player 2</label>
-                <input type="text" class="form-control" id="tournamentTextField"
-                placeholder="tournament id" name="pname2" value="<%=rounds[count].pname2 %>"  required>
-              </div> 
-         <label for="completedTextField">Winner</label>
-                <input type="text" class="form-control" id="completedTextField"
-                placeholder="Please Enter winner" name="winner"  required>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit for match <%=rounds[count].matchno%> </button>
-         <% }} %>
-         </form>
-        </div>
+
+  <div class="bracket-game" >
+    <div class="player top win">
+    <form class="form" method="post">
+      <button type="submit" class="btn btn-primary"><%= rounds[count].pname1 %></button>
+     </form>
+    </div>
+    <div class="player bot loss">
+      <button type="submit" class="btn btn-primary"><%= rounds[count].pname2 %></button>
+      
+      <br>
+    </div>
+  </div>
+  <%  matchno++; %>
+
+<% }} %>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==2){ %>
+
+<div class="round r-of-2" style="left:150px; top:100px; position:absolute;">
+  <div class="bracket-game">
+    <div class="player top loss">
+      Snute
+      <div class="score">
+        2
       </div>
     </div>
-
+    <div class="player bot win">
+      MC
+      <div class="score">
+        3
+      </div>
+    </div>
+  </div>
+</div>
+<% }} %>
 <% include ../partials/footer.ejs %>
 

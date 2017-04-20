@@ -42,16 +42,16 @@ let id = req.params.id;
 router.post('/:id', requireAuth, (req, res, next) => {
   let id = req.params.id;
   // get a reference to the id from the url
-    let newround = round({
+    let newround7 = round({
       "roundno": req.body.roundno,
       "matchno": req.body.matchno,
-      "pname1": req.body.pname1,
-      "pname2": req.body.pname2,
-      "winner": req.body.winner,
-      "tid": req.body.tid
+      "pname1": '',
+      "pname2": req.body.pname1,
+      "winner": '',
+      "tid": req.params.id
     });
 
-    router.create(newround, (err, rounds) => {
+    round.create(newround7, (err, rounds) => {
       if(err) {
         console.log(err);
         res.end(err);
@@ -61,6 +61,10 @@ router.post('/:id', requireAuth, (req, res, next) => {
       }
     });
 });
+
+
+
+
 
 
 /* GET contact page. */

@@ -162,7 +162,7 @@ round.create(newround12, (err, rounds) => {
       "roundno": '1',
       "matchno": '3',
       "pname1": req.body.pname5,
-      "pname2": req.body.pnam6,
+      "pname2": req.body.pname6,
       "winner": '',
       "tid": req.body.tid
     });
