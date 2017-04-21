@@ -61,7 +61,7 @@ router.post('/:id', requireAuth, (req, res, next) => {
         res.end(err);
       } else {
         console.log("Winner added for the round")
-        res.redirect('/content/rounds1/:id');
+        res.redirect('/tournaments');
       }
     });
  }

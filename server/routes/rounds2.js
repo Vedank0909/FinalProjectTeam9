@@ -41,23 +41,21 @@ let id = req.params.id;
 });
 router.post('/:id', requireAuth, (req, res, next) => {
   let id = req.params.id;
-  let newround7 = round({
+ let newround7 = round({
       "roundno": req.body.roundno,
       "matchno": req.body.matchno,
       "pname1": req.body.pname1,
       "pname2": req.body.pname2,
-      "winner": "",
-      "tid": req.params.id,
-      "_id": req.body.rid
+      "winner": '',
+      "tid": req.params.tid
     });
-    console.log(req.body.rid);
 
-    round.update({_id: req.body.rid}, newround7, (err) => {
+    round.create(newround7, (err, rounds) => {
       if(err) {
         console.log(err);
         res.end(err);
       } else {
-        console.log("Winner added for the round")
+        console.log("round2")
         res.redirect('/tournaments');
       }
     });

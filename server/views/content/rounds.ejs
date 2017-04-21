@@ -2,7 +2,7 @@
 <div class="round r-of-4">
 <% var matchno=1; var pname1,pname2;var roundno=2; var match=1 %>
 <% for(let count=0;count<rounds.length;count++){ %>
- <% if(pid==rounds[count].tid && rounds[count].roundno==1){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==1 && rounds[count].matchno<5){ %>
 
 
   <div class="bracket-game" >
