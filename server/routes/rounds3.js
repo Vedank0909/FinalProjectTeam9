@@ -29,7 +29,7 @@ let id = req.params.id;
       return console.error(err);
     }
     else {
-      res.render('content/rounds1', {
+      res.render('content/rounds3', {
         title: 'Rounds',
         rounds: rounds,
         pid:id,
@@ -83,7 +83,7 @@ router.post('/:id', requireAuth, (req, res, next) => {
         console.log(err);
         res.end(err);
       } else {
-        console.log("done!!!!!");
+        console.log("done!!!!! round 3");
         res.redirect('/tournaments');
 
       }

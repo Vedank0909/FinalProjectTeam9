@@ -33,6 +33,7 @@ let players = require('./routes/players');
 let rounds = require('./routes/rounds');
 let rounds1 = require('./routes/rounds1');
 let rounds2 = require('./routes/rounds2');
+let rounds3 = require('./routes/rounds3');
 
 
 let app = express();
@@ -70,6 +71,7 @@ app.use('/rounds', rounds);
 app.use('/rounds1', rounds1);
 app.use('/rounds', rounds);
 app.use('/rounds2', rounds2);
+app.use('/rounds3', rounds3);
 
 
 // Passport User Configuration

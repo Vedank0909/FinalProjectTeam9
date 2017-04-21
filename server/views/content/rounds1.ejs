@@ -22,8 +22,31 @@
 
 <% }} %>
 
+<% var winner=[];%>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==1 && rounds[count].matchno<5 ){ %>
+ <% let temp = rounds[count].matchno - 1;%>
+ <% winner[temp]= rounds[count].winner %>
+ <% console.log(winner[temp]);%>
+<% %>
+<% }} %>
 
-
+<% var t=0;var m=1%>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==1 && rounds[count].matchno<3 ){ %>
+ <div>
+<form class="form" method="post">
+<div>Click here to ubdate bout1 for round2</div>
+<input type="hidden" name="roundno" value="2">
+<input type="hidden" name="matchno" value="<%=m%>">
+<input type="hidden" name="p1" value="<%=winner[t]%>">
+<input type="hidden" name="p2" value="<%=winner[t+1]%>">
+<input type="hidden" name="tid" value="<%rounds[count].tid %>">
+ <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Update Bout<%=rounds[count].matchno%></button>
+</form>
+</div>
+<%t=t+2;m++;%>
+<%}}%>
 
 
 <% include ../partials/footer.ejs %>
