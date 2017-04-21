@@ -1,0 +1,30 @@
+<% include ../partials/header.ejs %>
+
+<% var matchno=1; var pname1,pname2;var roundno=2; var bout=1  %>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==1 && rounds[count].matchno<5 && rounds[count].winner==""){ %>
+
+<div>Round Number:<%=rounds[count].roundno%></div>
+<div>Match Number:<%=rounds[count].matchno%></div>
+<form class="form" method="post">
+<input type="hidden" name="roundno" value="<%=rounds[count].roundno%>">
+<input type="hidden" name="matchno" value="<%=rounds[count].matchno%>">
+<input type="hidden" name="pname1" value="<%=rounds[count].pname1%>">
+<input type="hidden" name="pname2" value="<%=rounds[count].pname2%>">
+<input type="hidden" name="rid" value="<%=rounds[count]._id %>">
+<input type="hidden" name="p1" value="">
+<input type="hidden" name="p2" value="">
+<input type="hidden" name="fid" value="<%=rounds[count].tid%>">
+  <input type="radio" name="winner" value="<%=rounds[count].pname1%>" checked><%=rounds[count].pname1%> <br>
+  <input type="radio" name="winner" value="<%=rounds[count].pname2%>" checked><%=rounds[count].pname2%> <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<% }} %>
+
+
+
+
+
+<% include ../partials/footer.ejs %>
+

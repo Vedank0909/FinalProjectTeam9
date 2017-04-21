@@ -1,6 +1,6 @@
 <% include ../partials/header.ejs %>
 <div class="round r-of-4">
-<% var matchno=1; var pname1,pname2;var roundno=2; %>
+<% var matchno=1; var pname1,pname2;var roundno=2; var match=1 %>
 <% for(let count=0;count<rounds.length;count++){ %>
  <% if(pid==rounds[count].tid && rounds[count].roundno==1){ %>
 
@@ -8,6 +8,10 @@
   <div class="bracket-game" >
     <div class="player top win">
     <form class="form" method="post">
+    <input type="hidden" name="roundno" value= "<%=rounds[count].roundno + 1%>">
+    <% if(matchno>2){ match=2;} %>
+    <input type="hidden" name="matchno" value= "<%=match%>">
+    <input type="hidden" name="pname1" value= "<%=rounds[count].pname1%>">
       <button type="submit" class="btn btn-primary"><%= rounds[count].pname1 %></button>
      </form>
     </div>

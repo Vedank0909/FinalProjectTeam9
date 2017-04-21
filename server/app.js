@@ -31,6 +31,8 @@ let index = require('./routes/index'); // top level routes
 let tournaments = require('./routes/tournaments');
 let players = require('./routes/players');
 let rounds = require('./routes/rounds');
+let rounds1 = require('./routes/rounds1');
+let rounds2 = require('./routes/rounds2');
 
 
 let app = express();
@@ -65,6 +67,9 @@ app.use('/tournaments', tournaments);
 app.use('/players', players);
 app.use('/reg', tournaments);
 app.use('/rounds', rounds);
+app.use('/rounds1', rounds1);
+app.use('/rounds', rounds);
+app.use('/rounds2', rounds2);
 
 
 // Passport User Configuration
