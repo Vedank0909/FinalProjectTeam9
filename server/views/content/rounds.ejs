@@ -1,48 +1,89 @@
 <% include ../partials/header.ejs %>
-<div class="round r-of-4">
+
 <% var matchno=1; var pname1,pname2;var roundno=2; var match=1 %>
 <% for(let count=0;count<rounds.length;count++){ %>
  <% if(pid==rounds[count].tid && rounds[count].roundno==1 && rounds[count].matchno<5){ %>
 
-
+<div class="round r-of-4">
   <div class="bracket-game" >
     <div class="player top win">
-    <form class="form" method="post">
-    <input type="hidden" name="roundno" value= "<%=rounds[count].roundno + 1%>">
-    <% if(matchno>2){ match=2;} %>
-    <input type="hidden" name="matchno" value= "<%=match%>">
-    <input type="hidden" name="pname1" value= "<%=rounds[count].pname1%>">
-      <button type="submit" class="btn btn-primary"><%= rounds[count].pname1 %></button>
-     </form>
+   <%=rounds[count].pname1%>
     </div>
     <div class="player bot loss">
-      <button type="submit" class="btn btn-primary"><%= rounds[count].pname2 %></button>
-      
+     <%=rounds[count].pname2%>
       <br>
     </div>
   </div>
-  <%  matchno++; %>
+  </div>
+
 
 <% }} %>
+<div class="round r-of-2" style="left:150px; top:150px;position:absolute;">
 <% for(let count=0;count<rounds.length;count++){ %>
- <% if(pid==rounds[count].tid && rounds[count].roundno==2){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==2 && rounds[count].matchno==1){ %>
 
-<div class="round r-of-2" style="left:150px; top:100px; position:absolute;">
-  <div class="bracket-game">
-    <div class="player top loss">
-      Snute
-      <div class="score">
-        2
-      </div>
+
+  <div class="bracket-game" >
+    <div class="player top win">
+   <%=rounds[count].pname1%>
     </div>
-    <div class="player bot win">
-      MC
-      <div class="score">
-        3
-      </div>
+    <div class="player bot loss">
+     <%=rounds[count].pname2%>
+      <br>
+</div>
+  </div>
+<% }} %>
+</div>
+
+<div class="round r-of-2" style="left:150px; top:200px;position:absolute;">
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==2 && rounds[count].matchno==2){ %>
+
+
+  <div class="bracket-game" >
+    <div class="player top win">
+   <%=rounds[count].pname1%>
+    </div>
+    <div class="player bot loss">
+     <%=rounds[count].pname2%>
+      <br>
+</div>
+  </div>
+<% }} %>
+</div>
+<div class="round r-of-2" style="left:300px; top:175px; position:absolute;">
+
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==3 && rounds[count].matchno<2){ %>
+
+
+  <div class="bracket-game" >
+    <div class="player top win">
+   <%=rounds[count].pname1%>
+    </div>
+    <div class="player bot loss">
+     <%=rounds[count].pname2%>
+      <br>
     </div>
   </div>
-</div>
+  
 <% }} %>
+</div>
+<% for(let count=0;count<rounds.length;count++){ %>
+ <% if(pid==rounds[count].tid && rounds[count].roundno==3 && rounds[count].matchno<2){ %>
+
+<div class="round r-of-2" style="left:450px; top:175px; position:absolute;">
+  <div class="bracket-game" >
+    <div class="player top win">
+   Winner
+    </div>
+    <div class="player bot loss">
+     <%=rounds[count].winner%>
+      <br>
+    </div>
+ 
+  </div>
+<% }} %>
+ </div>
 <% include ../partials/footer.ejs %>
 
